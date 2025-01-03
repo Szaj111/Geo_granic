@@ -6,7 +6,7 @@ import About from "./components/About";
 import Security from "./components/Straz";
 import Data from "./components/Data";
 import Tlo from "./components/obrazy/tlo.jpg";
-
+import Map_icon from "./components/obrazy/mapa.png";
 function Home() {
   return (
     <div className="App">
@@ -19,8 +19,12 @@ function Home() {
         <img className="Background" src={Tlo} alt="Tło Geoportalu" />
         <div className="ButtonContainer">
           <Link to="/map">
-            <button className="Button1">Mapa</button>
+            <div className="ButtonWithIcon">
+              <button className="Button1">Mapa</button>
+              <img className="Map_icon" src={Map_icon} alt="Ikona mapy" />
+            </div>
           </Link>
+
           <Link to="/about">
             <button className="Button2">O projekcie</button>
           </Link>

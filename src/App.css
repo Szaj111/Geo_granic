@@ -23,22 +23,31 @@ body {
   color: white;
 }
 
-.data {
-  font-size: 18px;
-  margin: 20px 0;
-  color: white;
-  cursor: pointer;
+.Container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Odstęp między obrazem a przyciskami */
+  margin-top: 30px;
 }
 
-.data:hover {
-  color: #551abc;
-  text-decoration: underline;
-  transition: color 0.3s ease;
+.Background {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  transform: translateX(-200px);
+}
+
+.ButtonContainer {
+  display: flex;
+  flex-direction: column; /* Przyciski jeden pod drugim */
+  gap: 10px; /* Odstęp między przyciskami */
 }
 
 .Button1,
-.Button2 {
-  margin: 10px;
+.Button2,
+.Button3,
+.Button4 {
   padding: 10px 20px;
   font-size: 16px;
   color: white;
@@ -47,13 +56,13 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left: 200px;
+  transform: translateX(-20px);
+  width: 200px;
 }
 
 .Button1:hover,
-.Button2:hover {
+.Button2:hover,
+.Button3:hover,
+.Button4:hover {
   background-color: #2980b9;
-}
-.ButtonContainer {
-  margin-left: 500px;
 }

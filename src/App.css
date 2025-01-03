@@ -47,9 +47,13 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-left: 200px;
 }
 
 .Button1:hover,
 .Button2:hover {
   background-color: #2980b9;
+}
+.ButtonContainer {
+  margin-left: 500px;
 }

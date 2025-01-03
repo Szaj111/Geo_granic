@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./App.css";
 import Map from "./components/Map";
-
+import About from "./components/About";
+import Tlo from "./components/obrazy/tlo.jpg";
 function Home() {
   return (
     <div className="body">
@@ -12,9 +13,15 @@ function Home() {
           Drogi przenikania granicy polsko-białoruskiej przez nielegalnych
           imigrantów
         </div>
-        <Link to="/map">
-          <button className="Button1">Mapa</button>
-        </Link>
+        <img className="Background" src={Tlo}></img>
+        <div className="ButtonContainer">
+          <Link to="/map">
+            <button className="Button1">Mapa</button>
+          </Link>
+          <Link to="about">
+            <button className="Button2">O projekcie</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
@@ -26,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<Map />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   );

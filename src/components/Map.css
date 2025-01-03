@@ -42,4 +42,16 @@
   padding: 10px 50px;
   margin-right: 750px;
   font-family: Lora;
+  background-position: right center;
+  margin: 40px;
+}
+
+.Background {
+  width: auto;
+  height: 500px;
+  margin: 20px auto;
+  display: block;
+  border-radius: 10px;
+  background-position: left center;
+  margin: 20px;
 }

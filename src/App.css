@@ -62,7 +62,6 @@ body {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  transform: translateX(-20px);
   width: 300px;
   text-align: center;
 }
@@ -76,11 +75,30 @@ body {
 
 .ButtonWithIcon {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: center; /* Wyrównanie w pionie */
+  gap: 10px; /* Odstęp między ikoną a przyciskiem */
+  text-decoration: none; /* Usuń podkreślenie */
 }
 
-.Map_icon {
-  width: 40px;
+.IconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Rozmiar kwadratu tła */
   height: 40px;
+  background-color: #3498db; /* Dopasowany kolor do przycisku */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.IconContainer:hover {
+  background-color: #2980b9; /* Efekt hover */
+}
+
+.Map_icon,
+.About_icon,
+.Data_icon,
+.Guard_icon {
+  width: 20px; /* Rozmiar ikony */
+  height: 20px;
 }

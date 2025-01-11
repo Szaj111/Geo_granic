@@ -1,6 +1,7 @@
 import React from "react";
 import "./Straz.css";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Link } from "react-router-dom";
 
@@ -17,7 +18,10 @@ function Straz() {
       "http://localhost:8080/geoserver/prge/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=prge%3Aposterunki&maxFeatures=50&outputFormat=application%2Fjson"
     )
       .then((response) => response.json())
-      .then((data) => setPosterunkiData(data));
+      .then((data) => {
+        console.log("Posterunki Data:", data);
+        setPosterunkiData(data);
+      });
   }, []);
 
   // Pobieranie danych GeoJSON dla Przejść Granicznych
@@ -26,8 +30,37 @@ function Straz() {
       "http://localhost:8080/geoserver/prge/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=prge%3Aprzejscia_graniczne&maxFeatures=50&outputFormat=application%2Fjson"
     )
       .then((response) => response.json())
-      .then((data) => setPrzejsciaData(data));
+      .then((data) => {
+        console.log("Przejścia Data:", data);
+        setPrzejsciaData(data);
+      });
   }, []);
+
+  // Funkcja do stylizacji punktów
+  const pointToLayer = (feature, latlng) => {
+    console.log("Feature Properties:", feature.properties); // Debugowanie właściwości
+    let color = "black"; // Domyślny kolor
+
+    // Sprawdzenie wartości w feature.properties
+    if (feature.id && feature.id.startsWith("posterunki")) {
+      color = "blue"; // Kolor dla posterunków
+    } else if (feature.id && feature.id.startsWith("przejscia")) {
+      color = "red"; // Kolor dla przejść granicznych
+    }
+
+    return L.circleMarker(latlng, {
+      radius: 8,
+      fillColor: color,
+      color: color,
+      weight: 1,
+      opacity: 1,
+      fillOpacity: 0.8,
+    }).bindPopup(
+      `<b>Posterunek</b><br>X: ${feature.properties.x_d || "Brak"}<br>Y: ${
+        feature.properties.y_d || "Brak"
+      }`
+    );
+  };
 
   return (
     <div className="map-container">
@@ -63,13 +96,23 @@ function Straz() {
           attribution="&copy; OpenStreetMap contributors"
         />
         {/* Wyświetlanie warstwy Posterunków */}
-        {showPosterunki && posterunkiData && <GeoJSON data={posterunkiData} />}
+        {showPosterunki && posterunkiData && (
+          <GeoJSON
+            data={posterunkiData}
+            pointToLayer={pointToLayer} // Stylizacja punktów
+          />
+        )}
         {/* Wyświetlanie warstwy Przejść Granicznych */}
-        {showPrzejscia && przejsciaData && <GeoJSON data={przejsciaData} />}
+        {showPrzejscia && przejsciaData && (
+          <GeoJSON
+            data={przejsciaData}
+            pointToLayer={pointToLayer} // Stylizacja punktów
+          />
+        )}
       </MapContainer>
 
       <Link to="/">
-        <button className="button">Powrót </button>
+        <button className="button">Powrót</button>
       </Link>
       <p className="map-description">
         Mapa przedstawiająca rozmieszczenie Posterunków Straży Granicznej oraz

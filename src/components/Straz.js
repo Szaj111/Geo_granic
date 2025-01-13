@@ -15,7 +15,7 @@ function Straz() {
   // Pobieranie danych GeoJSON dla Posterunków
   React.useEffect(() => {
     fetch(
-      "http://localhost:8080/geoserver/prge/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=prge%3Aposterunki&maxFeatures=50&outputFormat=application%2Fjson"
+      "http://localhost:8080/geoserver/prge/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=prge%3Aposterunki2&maxFeatures=50&outputFormat=application%2Fjson"
     )
       .then((response) => response.json())
       .then((data) => {

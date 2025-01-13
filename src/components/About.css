@@ -1,6 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
 .tytul {
-  font-size: 50px;
-  font-weight: bold;
+  font-size: 5em;
   margin-bottom: 20px;
-  color: white;
+  color: aliceblue;
+}
+
+.opis {
+  font-size: 3em;
+  max-width: 800px;
+  color: aliceblue;
 }

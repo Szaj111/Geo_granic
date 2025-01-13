@@ -1,5 +1,10 @@
 import React from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  WMSTileLayer,
+  LayersControl,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./Map.css";
 import { Link } from "react-router-dom";
@@ -17,13 +22,42 @@ function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; OpenStreetMap contributors"
         />
+
+        <LayersControl position="topright">
+          <LayersControl.Overlay name="Security">
+            <WMSTileLayer
+              url="http://localhost:8080/geoserver/wms"
+              layers="prge:Security1"
+              format="image/png"
+              transparent={true}
+            />
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay name="Hide">
+            <WMSTileLayer
+              url="http://localhost:8080/geoserver/wms"
+              layers="prge:Hide1"
+              format="image/png"
+              transparent={true}
+            />
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay name="Walk">
+            <WMSTileLayer
+              url="http://localhost:8080/geoserver/wms"
+              layers="prge:Walk1"
+              format="image/png"
+              transparent={true}
+            />
+          </LayersControl.Overlay>
+        </LayersControl>
       </MapContainer>
       <Link to="/">
-        <button className="button">Powrót </button>
+        <button className="button">Powrót</button>
       </Link>
 
       <p className="map-description">
-        Interaktywna mapa przedstawiająca przenikanie granicy .
+        Mapa z kryteriami trudności przenikalności
       </p>
     </div>
   );

@@ -55,15 +55,7 @@ const Data = () => {
           ))}
         </ul>
       </section>
-      <section>
-        <h1 className="main-header">NMT - Numeryczny Model Terenu</h1>
-        <p>
-          Numeryczny Model Terenu (NMT) jest dyskretną (punktową) reprezentacją
-          wysokości terenu, umożliwiającą odtworzenie kształtu powierzchni w
-          określonym obszarze. W tym przypadku model posiada rozdzielczość 100
-          m, co oznacza, że odległość między punktami siatki wynosi 100 metrów.
-        </p>
-      </section>
+      <section></section>
       <footer className="footer-link">
         <p>
           Informacje o posterunkach i oddziałach Straży Granicznej pochodzą ze
